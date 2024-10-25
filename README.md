@@ -1,4 +1,5 @@
 ## Dockerfile
+'''
 FROM python:3.12-slim
 
 WORKDIR /code
@@ -9,8 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./src ./src
 
 CMD [ "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload" ]
-
+'''
 ## docker-compose.yml
+'''
 services:
   app:
     build: .
@@ -27,9 +29,10 @@ services:
 
   redis:
     image: redis:alpine
-
+'''
 
 ## main.py
+'''
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -38,8 +41,9 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"Hello": "World! in dev container"}
-
+'''
 ## Directory structure
+'''
 [serge@almaPC fastapi]$ tree .
 .
 ├── docker-compose.yml
@@ -53,3 +57,4 @@ def read_root():
 
 2 directories, 6 files
 [serge@almaPC fastapi]$ 
+'''
